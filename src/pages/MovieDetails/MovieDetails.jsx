@@ -1,15 +1,23 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
+import { Link, Outlet } from 'react-router-dom';
 
 const MovieDetails = () => {
+  useEffect(() => {}, []);
 
-    useEffect(() => {},[])
-
-    return (
-        <div>
-          MovieDetails
-        </div>
-    )
-}
-
+  return (
+    <div>
+      <h2>MovieDetails</h2>
+      <ul>
+        <li>
+          <Link to="cast">cast</Link>
+        </li>
+        <li>
+          <Link to="reviews">reviews</Link>
+        </li>
+      </ul>
+      <Outlet />
+    </div>
+  );
+};
 
 export default MovieDetails;

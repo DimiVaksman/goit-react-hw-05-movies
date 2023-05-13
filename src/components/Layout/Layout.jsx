@@ -1,12 +1,27 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import { Container } from "./Layout.styled";
+import React from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
+import { Container } from './Layout.styled';
 
-export const Layout = ({children}) => {
-    return <Container>
-        {children}
+export const Layout = () => {
+  return (
+    <Container>
+      <header>
+        <ul>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/movies">Movies</NavLink>
+          </li>
+        </ul>
+      </header>
+
+      <main>
         <Outlet />
-        </Container>
-
-}
-
+      </main>
+      <footer>
+        footer
+      </footer>
+    </Container>
+  );
+};
