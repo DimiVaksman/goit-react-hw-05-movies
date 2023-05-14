@@ -1,21 +1,34 @@
+import { MovieCard } from 'components/MovieCard/MovieCard';
+import { useState } from 'react';
 import { useEffect } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
+import { fetchMovieDetails } from 'servieces/MovieAPI';
 
 const MovieDetails = () => {
-  useEffect(() => {}, []);
+
+    const { movieId } = useParams();
+    const [movieCard, setMovieCard] = useState([]);
+    const location = useLocation()
+
+    useEffect(() => {
+        const fetchDetails = async () => {
+          try {
+            const results  = await fetchMovieDetails(movieId);
+            setMovieCard(results);
+          } catch (error) {
+            console.log(error);
+          }
+        };
+    
+        fetchDetails();
+      }, [movieId]);
+
+
 
   return (
     <div>
-      <h2>MovieDetails</h2>
-      <ul>
-        <li>
-          <Link to="cast">cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">reviews</Link>
-        </li>
-      </ul>
-      <Outlet />
+        <Link to={location?.state?.from ?? '/'}>Back</Link>
+        <MovieCard cards={movieCard} />
     </div>
   );
 };

@@ -54,3 +54,11 @@ const API_KEY = '7510784cb92b403b6cb85c091d4aabc9';
   
     return data;
   };
+
+  export const fetchMovieDetails = async movieId => {
+    const { data } = await axios.get(
+      `${BASE_URL}/3/movie/${movieId}?api_key=${API_KEY}&language=en-US&page=1`
+    );
+  
+    return data;
+  };

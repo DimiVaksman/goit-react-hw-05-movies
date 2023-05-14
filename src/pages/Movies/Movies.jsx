@@ -16,15 +16,14 @@ const Status = {
 
 const Movies = () => {
   const [page, setPage] = useState(1);
-  //   const [totalPages, setTotalPages] = useState(1);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState(Status.IDLE);
-  //   const [query, setQuery] = useState('');
-
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
-  const location = useLocation();
+  const location = useLocation()
+
+
 
   const posterUrl = 'https://image.tmdb.org/t/p/original/${movie.poster_path}';
 
@@ -75,11 +74,12 @@ const Movies = () => {
   return (
     <div>
       <h2>Movies</h2>
+      <Link to="/">Back</Link>
       <SearchMovies onSubmit={handleSubmit} />
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+            <Link to={`/movies/${movie.id}` } state={{ from: location }} >
               <p> {movie.title}</p>
               <Poster movie={movie} />
               {/* <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}` } width="320" /> */}
