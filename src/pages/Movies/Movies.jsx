@@ -56,7 +56,7 @@ const Movies = () => {
     };
 
     fetchMovie();
-  }, [searchParams]);
+  }, [searchParams,error,movies]);
 
   const handleSubmit = query => {
     setSearchParams({ query });
