@@ -23,8 +23,6 @@ const API_KEY = '7510784cb92b403b6cb85c091d4aabc9';
 
 
 
-  const IMG_URL = "https://image.tmdb.org/t/p/original/"
-
 
   export const fetchPoster = async () => {
     const { data } = await axios.get(

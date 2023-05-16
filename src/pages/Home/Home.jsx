@@ -1,5 +1,4 @@
-import { useEffect, useState, CSSProperties } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { fetchTrendMovies } from 'servieces/MovieAPI';
 import { RotatingLines } from 'react-loader-spinner';
 
@@ -22,36 +21,20 @@ const Status = {
 
 const Home = () => {
   const [trendMovies, setTrendMovies] = useState([]);
-  const [topMovies, setTopMovies] = useState([]);
-  const [page, setPage] = useState(1);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [, setIsLoading] = useState(false);
   const [status, setStatus] = useState(Status.IDLE);
-  let [color, setColor] = useState('#ffffff');
 
   useEffect(() => {
-    if (trendMovies === []) {
-      return;
-    }
-    if (page === 1) {
-      setTrendMovies([]);
-    }
-
-    if (error) {
-      setError(null);
-    }
-    setStatus(Status.PENDING);
 
     const fetchTrendingMovies = async () => {
       try {
-        setError(false);
+
         setIsLoading(true);
         const { results } = await fetchTrendMovies();
         setTrendMovies(results);
         setStatus(Status.RESOLVED);
       } catch (error) {
-        setError(error);
-        setStatus(Status.REJECTED);
+        console.log(error)
       }
     };
 

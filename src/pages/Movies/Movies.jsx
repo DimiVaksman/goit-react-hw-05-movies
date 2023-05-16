@@ -18,18 +18,9 @@ import {
 import LogoBack from '../Movies/backward.svg';
 
 
-const Status = {
-  IDLE: 'idle',
-  PENDING: 'pending',
-  RESOLVED: 'resolved',
-  REJECTED: 'rejected',
-};
 
 const Movies = () => {
-  const [page, setPage] = useState(1);
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [status, setStatus] = useState(Status.IDLE);
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const location = useLocation();
@@ -41,19 +32,14 @@ const Movies = () => {
     if (movies === []) {
       return;
     }
-    if (page === 1) {
-      setMovies([]);
-    }
 
     if (error) {
       setError(null);
     }
-    setStatus(Status.PENDING);
 
     const fetchMovie = async () => {
       try {
         setError(false);
-        setIsLoading(true);
         const { results } = await fetchMovies(query);
         setMovies(results);
         if (results.length === 0) {
