@@ -1,9 +1,10 @@
-import { Cast } from 'components/Cast/Cast';
+
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchReviews } from 'servieces/MovieAPI';
+import { List,Author, Content } from './Reviews.styled';
 
-export const Reviews = () => {
+ const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
 
@@ -22,20 +23,21 @@ export const Reviews = () => {
 
   return (
     <div>
-      <h1>MOVIE REVIEWS</h1>
       {reviews.length ? (
-        <ul>
+        <List>
           {reviews.map(review => (
             <li key={review.id}>
-              <h2>{review.author}</h2>
+              <Author>{review.author}</Author>
 
-              <p>{review.content}</p>
+              <Content>{review.content}</Content>
             </li>
           ))}
-        </ul>
+        </List>
       ) : (
-        <p>We don't have any information about the reviews yet.</p>
+        <Content>We don't have any information about the reviews yet.</Content>
       )}
     </div>
   );
 };
+
+export default Reviews;

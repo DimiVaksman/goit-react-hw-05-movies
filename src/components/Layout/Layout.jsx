@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { Container, NavList, NavItem, Header, Logo } from './Layout.styled';
-import LogoSvg from "../Logo/3d-movie.svg"
+import {
+  Container,
+  NavList,
+  NavItem,
+  Header,
+  Logo,
+  LogoFooter,
+  Footer,
+} from './Layout.styled';
+import LogoSvg from '../Logo/3d-movie.svg';
+import LogoSvgFooter from '../Logo/popcorn.svg';
 
-export const Layout = () => {
+const Layout = () => {
   return (
     <Container>
       <Header>
         <NavList>
           <NavItem>
-            <Logo src={LogoSvg} alt="logo" width="80" />
             <NavLink
-               style={({ isActive }) => {
+              style={({ isActive }) => {
                 return {
                   textDecoration: 'none',
                   fontWeight: isActive ? 'bold' : '',
@@ -20,6 +28,7 @@ export const Layout = () => {
               }}
               to="/"
             >
+              <Logo src={LogoSvg} alt="logo" width="80" />
               Home
             </NavLink>
           </NavItem>
@@ -41,9 +50,31 @@ export const Layout = () => {
       </Header>
 
       <main>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </main>
-      <footer>footer</footer>
+      <Footer>
+        <NavList>
+          <NavItem>
+            <NavLink
+              style={({ isActive }) => {
+                return {
+                  textDecoration: 'none',
+                  fontWeight: isActive ? 'bold' : '',
+                  color: isActive ? 'rgba(171, 238, 45, 0.5)' : '#088CF7',
+                };
+              }}
+              to="/"
+            >
+              <LogoFooter src={LogoSvgFooter} alt="logo" width="80" />
+              here should be footer
+            </NavLink>
+          </NavItem>
+        </NavList>
+      </Footer>
     </Container>
   );
 };
+
+export default Layout;

@@ -17,6 +17,7 @@ export const TrendMovieList = styled.ul`
   padding-top: 80px;
   padding-left: 15px;
   padding-right: 15px;
+  padding-bottom: 80px;
 `;
 
 export const TitleTrendMovies = styled.h2`
@@ -26,6 +27,7 @@ export const TitleTrendMovies = styled.h2`
   text-shadow: 1px 5px 7px rgba(0, 0, 0, 0.6);
   margin: 0;
   padding-top: 8px;
+  color: rgba(254, 99, 134,80);
 `;
 
 export const Loader = styled.div`
@@ -47,7 +49,7 @@ export const TrendMovieImg = styled.img`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: rgb(8, 140, 247);
+  color: rgba(254, 99, 134,80);
 `;
 
 export const Title = styled.h1`
@@ -60,3 +62,4 @@ export const Title = styled.h1`
   text-align: center;
   text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.6);
 `;
+
