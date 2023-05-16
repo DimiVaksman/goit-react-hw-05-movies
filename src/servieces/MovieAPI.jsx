@@ -28,7 +28,6 @@ const API_KEY = '7510784cb92b403b6cb85c091d4aabc9';
     const { data } = await axios.get(
       `https://image.tmdb.org/t/p/original/`
     );
-    console.log(data);
   
     return data;
   };
@@ -39,7 +38,7 @@ const API_KEY = '7510784cb92b403b6cb85c091d4aabc9';
     const { data } = await axios.get(
       `${BASE_URL}/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
     );
-    console.log(data);
+  
   
     return data;
   };
@@ -48,7 +47,6 @@ const API_KEY = '7510784cb92b403b6cb85c091d4aabc9';
     const { data } = await axios.get(
       `${BASE_URL}/3/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US`
     );
-    console.log(data);
   
     return data;
   };
